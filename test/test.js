@@ -155,6 +155,11 @@ describe('TEST', () => {
   });
 
   it('CONTRIBUTE', async () => {
+    expect(Array.isArray(vSettings.limitAmounts)).toBe(true);
+    expect(vSettings.limitAmounts.length).toBeGreaterThanOrEqual(4);
+    expect(params.contributeAmount).toBeGreaterThan(0);
+    expect(params.contributeAmount).toBeLessThanOrEqual(vSettings.limitAmounts[1]);
+    expect(params.contributeAmount).toBeLessThanOrEqual(vSettings.limitAmounts[3]);
     const ventureContributeTx1 = await venture
       .connect(superUserAccount)
       .contribute(usdcAddress, params.contributeAmount);
