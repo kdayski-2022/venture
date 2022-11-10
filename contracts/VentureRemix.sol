@@ -7,6 +7,7 @@ pragma solidity 0.4.24;
 import "hardhat/console.sol"; //!DEV
 import "./lib/ArrayUtils.sol";
 import "./lib/ERC20.sol";
+import "./IReward.sol";
 
 contract VentureRemix {
     //is OracleClient
@@ -275,26 +276,7 @@ contract VentureRemix {
         } else {
             userAmountTokens = int256(_amount);
         }
-
-        // for (uint256 i = _startUser; i < contributeListLength; i++) {
-        //     Contribute storage _contribute = contributeList[i];
-        //     if (_contribute.projectTokensAmount == 0) {
-        //         if (
-        //             userAmountTokens <
-        //             userAmountTokens - int256(_contribute.clearAmount)
-        //         ) break;
-        //         _token.transferFrom(
-        //             msg.sender,
-        //             _contribute.user,
-        //             _contribute.clearAmount
-        //         );
-
-        //         _contribute.projectTokensAmount = _contribute.clearAmount;
-        //         currentCapAmount += _contribute.clearAmount;
-        //         userAmountTokens -= int256(_contribute.clearAmount);
-        //     }
-        // }
-        //new Reward ("xxx", false, comunityToke, projectToken, amount, currentBlock, uiin256 max, 1, 0)
+        // IReward(rewardApp).newReward("Venture reward",true, addressCommunityToken,projectToken,userAmountTokens,0,0,1,0);//???
     }
 
     function setCapAmount(uint256 _amount) public {
